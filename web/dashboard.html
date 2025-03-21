@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Apollo Rental Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h3>Apollo Rental</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="active"><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#" id="newEntryLink"><i class="fas fa-plus-circle"></i> New Entry</a></li>
+            <li><a href="#" id="reportLink"><i class="fas fa-chart-bar"></i> Reports</a></li>
+            <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <header class="top-navbar">
+            <div class="toggle-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="search-container">
+                <form id="searchForm">
+                    <div class="form-inline">
+                        <label for="siteSearch" style="color: rgb(250, 244, 244);">Enter Site ID:</label>
+                        <input type="text" id="siteSearch" placeholder="Search site...">
+                        <button type="submit" class="btn btn-search"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="user-profile">
+                <span class="user-name" style="color: rgb(250, 244, 244);">Akash</span>
+                <img src="img/Akash.png" alt="User Avatar" class="avatar" style="width: 50px; height: 50px; cursor: pointer;" onclick="this.style.position = this.style.position === 'fixed' ? '' : 'fixed'; this.style.top = '50%'; this.style.left = '50%'; this.style.transform = this.style.transform === 'translate(-50%, -50%) scale(10)' ? '' : 'translate(-50%, -50%) scale(10)'; this.style.zIndex = '1000';">
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="content-header">
+                <h1>Site Details</h1>
+                <div class="actions">
+                    <button class="btn btn-primary" id="editBtn"><i class="fas fa-edit"></i> Edit</button>
+                </div>
+            </div>
+
+            <div class="data-grid-container">
+                <div class="data-grid">
+                    <!-- Sample grid, actual data would be populated dynamically -->
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">SITE</div>
+                        <div class="card-body" id="site_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">STORE NAME</div>
+                        <div class="card-body" id="store_name_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">REGION</div>
+                        <div class="card-body" id="region_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">DIV</div>
+                        <div class="card-body" id="div_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">MANAGER</div>
+                        <div class="card-body" id="manager_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">ASST.MANAGER</div>
+                        <div class="card-body" id="asst_manager_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">EXECUTIVE</div>
+                        <div class="card-body" id="executive_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">D.O.O</div>
+                        <div class="card-body" id="doo_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">SQ.FT</div>
+                        <div class="card-body" id="sqft_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">AGREEMENT DATE</div>
+                        <div class="card-body" id="agreement_date_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">RENT POSITION DATE</div>
+                        <div class="card-body" id="rent_position_date_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">RENT EFFECTIVE DATE</div>
+                        <div class="card-body" id="rent_effective_date_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">AGREEMENT VALID UPTO</div>
+                        <div class="card-body" id="agreement_valid_upto_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">CURRENT DATE</div>
+                        <div class="card-body" id="current_date_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">LEASE PERIOD</div>
+                        <div class="card-body" id="lease_period_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">RENT_FREE_PERIOD_DAYS</div>
+                        <div class="card-body" id="rent_free_period_days_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">RENT EFFECTIVE AMOUNT</div>
+                        <div class="card-body" id="rent_effective_amount_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">PRESENT RENT</div>
+                        <div class="card-body" id="present_rent_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">HIKE %</div>
+                        <div class="card-body" id="hike_percentage_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">HIKE YEAR</div>
+                        <div class="card-body" id="hike_year_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">RENT DEPOSIT</div>
+                        <div class="card-body" id="rent_deposit_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">OWNER NAME-1</div>
+                        <div class="card-body" id="owner_name1_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">OWNER NAME-2</div>
+                        <div class="card-body" id="owner_name2_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">OWNER NAME-3</div>
+                        <div class="card-body" id="owner_name3_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">OWNER NAME-4</div>
+                        <div class="card-body" id="owner_name4_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">OWNER NAME-5</div>
+                        <div class="card-body" id="owner_name5_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">OWNER NAME-6</div>
+                        <div class="card-body" id="owner_name6_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">OWNER MOBILE</div>
+                        <div class="card-body" id="owner_mobile_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">CURRENT DATE 1</div>
+                        <div class="card-body" id="current_date1_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header">VALIDITY DATE</div>
+                        <div class="card-body" id="validity_date_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">GST NUMBER</div>
+                        <div class="card-body" id="gst_number_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">PAN NUMBER</div>
+                        <div class="card-body" id="pan_number_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">TDS PERCENTAGE</div>
+                        <div class="card-body" id="tds_percentage_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">MATURE</div>
+                        <div class="card-body" id="mature_value"></div>
+                    </div>
+                    <div class="data-card">
+                        <div class="card-header" style="background-color: lightblue;">STATUS</div>
+                        <div class="card-body" id="status_value"></div>
+                    </div>
+                </div>
+
+                <div class="remarks-section">
+                    <div class="remarks-header" style="background-color: lightblue;">REMARKS</div>
+                    <div class="remarks-body" id="remarks_value"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="newEntryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Data Entry</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <!-- Form content would be added dynamically or statically here -->
+                <form id="newEntryForm">
+                    <!-- Sample fields -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="site">SITE *</label>
+                            <input type="text" id="site" name="site" required maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="storeName">STORE NAME *</label>
+                            <input type="text" id="storeName" name="storeName" required>
+                        </div>
+                    </div>
+                    <!-- More form fields would be added here -->
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Save Record</button>
+                        <button type="button" class="btn btn-secondary" id="clearForm">Clear Data</button>
+                        <button type="button" class="btn btn-upload">Upload Excel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="reportModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Generate Report</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="reportForm">
+                    <div class="form-group">
+                        <label>Report Type:</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="reportType" value="Hike Report" checked> HIKE REPORT</label>
+                            <label><input type="radio" name="reportType" value="Rent Report"> RENT REPORT</label>
+                            <label><input type="radio" name="reportType" value="Owner Wise Report"> OWNER WISE REPORT</label>
+                            <label><input type="radio" name="reportType" value="Negotiation Report"> NEGOTIATION REPORT</label>
+                            <label><input type="radio" name="reportType" value="Lease Period Report"> LEASE PERIOD REPORT</label>
+                            <label><input type="radio" name="reportType" value="ALL SITES DATA REPORTS"> ALL SITES DATA REPORTS</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fromDate">From Date:</label>
+                            <input type="date" id="fromDate" name="fromDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="toDate">To Date:</label>
+                            <input type="date" id="toDate" name="toDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group" id="leasePeriodGroup" style="display: none;">
+                        <label for="leasePeriod">Lease Period:</label>
+                        <select id="leasePeriod" name="leasePeriod">
+                            <!-- Options 0-20 -->
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <!-- More options would be added here -->
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Generate Report</button>
+                        <button type="button" class="btn btn-secondary" id="cancelReport">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add this authentication modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Authentication Required</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="authForm">
+                    <div class="form-group">
+                        <label for="authUsername">Username:</label>
+                        <input type="text" id="authUsername" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="authPassword">Password:</label>
+                        <input type="password" id="authPassword" required>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-cancel" id="cancelAuth">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

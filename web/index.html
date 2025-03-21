@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Apollo Rental Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="login-page">
+    <div class="login-container" style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+        <div class="login-bg">
+            <!-- Background image will be set in CSS -->
+        </div>
+        <div class="login-form-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <div class="login-form">
+                <h1>RENTAL DATA MANAGEMENT</h1>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username" style="color: rgb(255, 255, 255);">Username</label>
+                        <input type="username" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" style="color: rgb(255, 255, 255);">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

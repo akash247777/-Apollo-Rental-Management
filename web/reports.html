@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Apollo Rental Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="reports-page">
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h3>Apollo Rental</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#" id="newEntryLink"><i class="fas fa-plus-circle"></i> New Entry</a></li>
+            <li class="active"><a href="reports.html"><i class="fas fa-chart-bar"></i> Reports</a></li>
+            <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <header class="top-navbar">
+            <div class="toggle-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="page-title">
+                <h2>Report Generation</h2>
+            </div>
+            <div class="user-profile">
+                <span class="user-name">Admin</span>
+                <img src="img/user-avatar.png" alt="User Avatar" class="avatar">
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="report-controls">
+                <div class="control-section">
+                    <h3>Report Type</h3>
+                    <div class="radio-group">
+                        <label><input type="radio" name="reportType" value="Hike Report" checked> HIKE REPORT</label>
+                        <label><input type="radio" name="reportType" value="Rent Report"> RENT REPORT</label>
+                        <label><input type="radio" name="reportType" value="Owner Wise Report"> OWNER WISE REPORT</label>
+                        <label><input type="radio" name="reportType" value="Negotiation Report"> NEGOTIATION REPORT</label>
+                        <label><input type="radio" name="reportType" value="Lease Period Report"> LEASE PERIOD REPORT</label>
+                        <label><input type="radio" name="reportType" value="ALL SITES DATA REPORTS"> ALL SITES DATA REPORTS</label>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="date-filters">
+                        <div class="form-group">
+                            <label for="fromDate">From Date:</label>
+                            <input type="date" id="fromDate" name="fromDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="toDate">To Date:</label>
+                            <input type="date" id="toDate" name="toDate">
+                        </div>
+                    </div>
+
+                    <div class="additional-filters" id="additionalFilters" style="display: none;">
+                        <div class="form-group" id="divFilter">
+                            <label for="divSelect">DIV:</label>
+                            <select id="divSelect">
+                                <option value="ALL">ALL</option>
+                                <option value="SAP">SAP</option>
+                                <option value="BOT">BOT</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="statusFilter">
+                            <label for="statusSelect">Status:</label>
+                            <select id="statusSelect">
+                                <option value="ALL">ALL</option>
+                                <option value="ONLINE">ONLINE</option>
+                                <option value="OFFLINE">OFFLINE</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="lease-period-filter" id="leasePeriodFilter" style="display: none;">
+                        <div class="form-group">
+                            <label for="leasePeriod">Lease Period:</label>
+                            <select id="leasePeriod">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-primary" id="generateBtn"><i class="fas fa-cog"></i> Generate Report</button>
+                    <button class="btn btn-secondary" id="backBtn"><i class="fas fa-arrow-left"></i> Back</button>
+                </div>
+            </div>
+
+            <div class="report-results">
+                <div class="results-header">
+                    <h3>Report Results</h3>
+                    <div class="search-export">
+                        <div class="search-box">
+                            <input type="text" id="reportSearch" placeholder="Search in report...">
+                            <button class="btn btn-search"><i class="fas fa-search"></i></button>
+                        </div>
+                        <button class="btn btn-export"><i class="fas fa-file-export"></i> Export to Excel</button>
+                    </div>
+                </div>
+
+                <div class="report-table-container">
+                    <table class="report-table" id="reportTable">
+                        <thead>
+                            <tr>
+                                <!-- Headers would be dynamically generated based on report type -->
+                                <th>SITE</th>
+                                <th>STORE NAME</th>
+                                <th>REGION</th>
+                                <th>PRESENT RENT</th>
+                                <th>HIKE %</th>
+                                <th>HIKE YEAR</th>
+                                <!-- More headers would be added dynamically -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data rows would be populated dynamically -->
+                            <tr>
+                                <td>12345</td>
+                                <td>Store ABC</td>
+                                <td>North</td>
+                                <td>50000</td>
+                                <td>5</td>
+                                <td>3</td>
+                            </tr>
+                            <!-- More rows would be added dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/reports.js"></script>
+</body>
+</html> 

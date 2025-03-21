@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Entry - Apollo Rental Management</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="new-entry-page">
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h3>Apollo Rental</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="active"><a href="new-entry.html"><i class="fas fa-plus-circle"></i> New Entry</a></li>
+            <li><a href="#" id="reportLink"><i class="fas fa-chart-bar"></i> Reports</a></li>
+            <li><a href="index.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+        <header class="top-navbar">
+            <div class="toggle-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="page-title">
+                <h2>New Data Entry</h2>
+            </div>
+            <div class="user-profile">
+                <span class="user-name">Admin</span>
+                <img src="img/user-avatar.png" alt="User Avatar" class="avatar">
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <div class="form-container">
+                <div class="form-header">
+                    <h3>Enter Site Details</h3>
+                    <div class="form-actions">
+                        <button class="btn btn-upload" id="uploadExcel"><i class="fas fa-file-upload"></i> Upload Excel</button>
+                    </div>
+                </div>
+
+                <form id="newEntryForm" class="entry-form">
+                    <div class="form-grid">
+                        <!-- Row 1 -->
+                        <div class="form-group">
+                            <label for="site">SITE *</label>
+                            <input type="text" id="site" name="site" required maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="storeName">STORE NAME *</label>
+                            <input type="text" id="storeName" name="storeName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">REGION *</label>
+                            <input type="text" id="region" name="region" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="div">DIV *</label>
+                            <select id="div" name="div" required>
+                                <option value="">Select DIV</option>
+                                <option value="SAP">SAP</option>
+                                <option value="BOT">BOT</option>
+                            </select>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="form-group">
+                            <label for="manager">MANAGER *</label>
+                            <input type="text" id="manager" name="manager" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="asstManager">ASST.MANAGER *</label>
+                            <input type="text" id="asstManager" name="asstManager" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="executive">EXECUTIVE *</label>
+                            <input type="text" id="executive" name="executive" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="doo">D.O.O *</label>
+                            <input type="date" id="doo" name="doo" required>
+                        </div>
+
+                        <!-- Row 3 -->
+                        <div class="form-group">
+                            <label for="sqft">SQ.FT *</label>
+                            <input type="number" id="sqft" name="sqft" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="agreementDate">AGREEMENT DATE *</label>
+                            <input type="date" id="agreementDate" name="agreementDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rentPositionDate">RENT POSITION DATE *</label>
+                            <input type="date" id="rentPositionDate" name="rentPositionDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="rentEffectiveDate">RENT EFFECTIVE DATE *</label>
+                            <input type="date" id="rentEffectiveDate" name="rentEffectiveDate" required>
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="form-group">
+                            <label for="agreementValidUpto">AGREEMENT VALID UPTO</label>
+                            <input type="date" id="agreementValidUpto" name="agreementValidUpto" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="currentDate">CURRENT DATE</label>
+                            <input type="date" id="currentDate" name="currentDate" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="leasePeriod">LEASE PERIOD *</label>
+                            <select id="leasePeriod" name="leasePeriod" required>
+                                <option value="">Select Period</option>
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15</option>
+                                <option value="16">16</option>
+                                <option value="17">17</option>
+                                <option value="18">18</option>
+                                <option value="19">19</option>
+                                <option value="20">20</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rentFreePeriod">RENT_FREE_PERIOD_DAYS *</label>
+                            <input type="number" id="rentFreePeriod" name="rentFreePeriod" required>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div class="form-group">
+                            <label for="rentEffectiveAmount">RENT EFFECTIVE AMOUNT *</label>
+                            <input type="number" id="rentEffectiveAmount" name="rentEffectiveAmount" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="presentRent">PRESENT RENT *</label>
+                            <input type="number" id="presentRent" name="presentRent" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hikePercentage">HIKE % *</label>
+                            <input type="number" id="hikePercentage" name="hikePercentage" required step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="hikeYear">HIKE YEAR *</label>
+                            <input type="number" id="hikeYear" name="hikeYear" required>
+                        </div>
+
+                        <!-- Row 6 -->
+                        <div class="form-group">
+                            <label for="rentDeposit">RENT DEPOSIT *</label>
+                            <input type="number" id="rentDeposit" name="rentDeposit" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ownerName1">OWNER NAME-1 *</label>
+                            <input type="text" id="ownerName1" name="ownerName1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ownerName2">OWNER NAME-2</label>
+                            <input type="text" id="ownerName2" name="ownerName2">
+                        </div>
+                        <div class="form-group">
+                            <label for="ownerName3">OWNER NAME-3</label>
+                            <input type="text" id="ownerName3" name="ownerName3">
+                        </div>
+
+                        <!-- Row 7 -->
+                        <div class="form-group">
+                            <label for="ownerName4">OWNER NAME-4</label>
+                            <input type="text" id="ownerName4" name="ownerName4">
+                        </div>
+                        <div class="form-group">
+                            <label for="ownerName5">OWNER NAME-5</label>
+                            <input type="text" id="ownerName5" name="ownerName5">
+                        </div>
+                        <div class="form-group">
+                            <label for="ownerName6">OWNER NAME-6</label>
+                            <input type="text" id="ownerName6" name="ownerName6">
+                        </div>
+                        <div class="form-group">
+                            <label for="ownerMobile">OWNER MOBILE NUMBER</label>
+                            <input type="text" id="ownerMobile" name="ownerMobile">
+                        </div>
+
+                        <!-- Row 8 -->
+                        <div class="form-group">
+                            <label for="currentDate1">CURRENT DATE 1</label>
+                            <input type="text" id="currentDate1" name="currentDate1" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="validityDate">VALIDITY DATE</label>
+                            <input type="text" id="validityDate" name="validityDate" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="gstNumber">GST_NUMBER *</label>
+                            <input type="text" id="gstNumber" name="gstNumber" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="panNumber">PAN_NUMBER *</label>
+                            <input type="text" id="panNumber" name="panNumber" required>
+                        </div>
+
+                        <!-- Row 9 -->
+                        <div class="form-group">
+                            <label for="tdsPercentage">TDS_PERCENTAGE *</label>
+                            <input type="number" id="tdsPercentage" name="tdsPercentage" required step="0.01">
+                        </div>
+                        <div class="form-group">
+                            <label for="mature">MATURE *</label>
+                            <select id="mature" name="mature" required>
+                                <option value="">Select Option</option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="status">STATUS *</label>
+                            <select id="status" name="status" required>
+                                <option value="">Select Status</option>
+                                <option value="ONLINE">ONLINE</option>
+                                <option value="OFFLINE">OFFLINE</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Remarks Section -->
+                    <div class="form-group full-width">
+                        <label for="remarks">REMARKS</label>
+                        <textarea id="remarks" name="remarks" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Record</button>
+                        <button type="button" class="btn btn-secondary" id="clearFormBtn"><i class="fas fa-eraser"></i> Clear Data</button>
+                        <button type="button" class="btn btn-cancel" id="cancelBtn"><i class="fas fa-times"></i> Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Excel Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Upload Excel Data</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="uploadForm">
+                    <div class="form-group">
+                        <label for="excelFile">Select Excel File:</label>
+                        <input type="file" id="excelFile" name="excelFile" accept=".xlsx,.xls">
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-primary">Upload</button>
+                        <button type="button" class="btn btn-secondary" id="cancelUpload">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/new-entry.js"></script>
+</body>
+</html> 
