@@ -183,6 +183,7 @@ def serve_static(path):
 def login():
     try:
         data = request.get_json()
+        print(f"Login attempt with username: {data['username']}")  # Debug print
         
         # First check fallback credentials
         if data['username'] in ['krishna', 'kuber'] and data['password'] in ['krishna@123', 'kuber@123']:
@@ -203,6 +204,7 @@ def login():
             # Query for user
             cursor.execute("SELECT password, role FROM USERS WHERE username = ?", (data['username'],))
             user_data = cursor.fetchone()
+            print(f"User data fetched: {user_data}")  # Debug print
             
             if user_data:
                 stored_hash = user_data[0].encode('utf-8')
@@ -218,11 +220,11 @@ def login():
                         }
                     }), 200
             
+            print("Invalid credentials")  # Debug print
             return jsonify({'message': 'Invalid credentials'}), 401
             
         except Exception as e:
             print(f"Database error during login: {str(e)}")
-            # If database authentication fails, still return invalid credentials
             return jsonify({'message': 'Invalid credentials'}), 401
         finally:
             if 'cursor' in locals():
